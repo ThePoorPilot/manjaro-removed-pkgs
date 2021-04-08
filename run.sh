@@ -58,5 +58,7 @@ repo="community" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differenc
 repo="extra" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differences.sh
 repo="multilib" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differences.sh
 
-#repo-add ./manjaro-removed-pkgs.db.tar.gz ./*.pkg.tar.zst
-#scp * thepoorpilot@shell.sourceforge.net:/home/frs/project/manjaro-removed-pkgs/os/x86_64
+cd packages
+rm ./manjaro-removed-pkgs.db
+rm ./manjaro-removed-pkgs.files
+cd ../
