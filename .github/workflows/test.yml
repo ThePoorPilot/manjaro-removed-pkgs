@@ -45,4 +45,12 @@ jobs:
           gh auth login --with-token < ../token.txt
           gh release create -R github.com/ThePoorPilot/manjaro-removed-pkgs x86_64 ./packages/* -n "A repo contained within a release!" -t "manjaro-removed-pkgs"
           rm ../token.txt
-          
+
+#      - name: upload_pkgs(old)
+#        run: |
+#          cd ./manjaro-removed-pkgs
+#          echo "adding ssh key for sourceforge"
+#          mkdir ~/.ssh/
+#          ssh-keyscan -H frs.sourceforge.net >> ~/.ssh/known_hosts
+#          echo "uploading packages"
+#          SSHPASS="${{ secrets.PASSWORD }}" ./upload.sh
