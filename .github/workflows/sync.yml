@@ -43,7 +43,7 @@ jobs:
           cd ./manjaro-removed-pkgs
           echo "adding ssh key for sourceforge"
           mkdir ~/.ssh/
-          ssh-keyscan -H shell.sourceforge.net >> ~/.ssh/known_hosts
+          ssh-keyscan -H frs.sourceforge.net >> ~/.ssh/known_hosts
           echo "uploading packages"
           SSHPASS="${{ secrets.PASSWORD }}" ./upload.sh
           
