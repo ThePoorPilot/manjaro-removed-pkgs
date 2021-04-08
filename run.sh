@@ -17,7 +17,7 @@ cd ../
 cd ./finding
 #download manjaro-removed-pkgs db file
 echo "Downloading manjaro-removed-pkgs repo files..."
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/os/x86_64/manjaro-removed-pkgs.db
+wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db
 echo "extracting manjaro-removed-pkgs database"
 mkdir ./manjaro-removed-pkgs
 {
