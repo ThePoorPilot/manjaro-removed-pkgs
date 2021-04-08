@@ -6,4 +6,4 @@
 
 cd ./packages
 #use env variable SSHPASS in action yaml
-sshpass -e scp * thepoorpilot@shell.sourceforge.net:/home/frs/project/manjaro-removed-pkgs/os/x86_64
+sshpass -e scp * thepoorpilot@frs.sourceforge.net:/home/frs/p/manjaro-removed-pkgs/os/x86_64
