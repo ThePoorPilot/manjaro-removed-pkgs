@@ -8,16 +8,16 @@ mkdir ./packages
 #configure so repo-add works later
 cd ./packages
 echo "Configuring Repo in packages folder"
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db.tar.gz
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.files.tar.gz
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.files
+wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.db.tar.gz
+wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.db
+wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.files.tar.gz
+wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.files
 
 cd ../
 cd ./finding
 #download manjaro-removed-pkgs db file
 echo "Downloading manjaro-removed-pkgs repo files..."
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db
+wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.db
 echo "extracting manjaro-removed-pkgs database"
 mkdir ./manjaro-removed-pkgs
 {
