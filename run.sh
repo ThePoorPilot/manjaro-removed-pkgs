@@ -5,14 +5,13 @@ rm -rf ./packages
 mkdir ./finding
 mkdir ./packages
 
-
 #configure so repo-add works later
 cd ./packages
 echo "Configuring Repo in packages folder"
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/os/x86_64/manjaro-removed-pkgs.db.tar.gz
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/os/x86_64/manjaro-removed-pkgs.db
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/os/x86_64/manjaro-removed-pkgs.files.tar.gz
-wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/os/x86_64/manjaro-removed-pkgs.files
+wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db.tar.gz
+wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.db
+wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.files.tar.gz
+wget -q https://downloads.sourceforge.net/project/manjaro-removed-pkgs/x86_64/manjaro-removed-pkgs.files
 
 cd ../
 cd ./finding
