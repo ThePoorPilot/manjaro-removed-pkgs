@@ -18,13 +18,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
-      - name: Download_pkgs
+      - name: Dependencies
         run: |
           echo "installing dependencies/pacman-utils"
           sudo apt-get update
-          sudo apt-get install sshpass
+          sudo apt-get install sshpass ksh
           wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb
           sudo apt-get install -f ./pacman-utils_5.2.2-2_amd64.deb
+      - name: download_pkgs
+        run: |
           echo "starting download process"
           git clone https://github.com/ThePoorPilot/manjaro-removed-pkgs.git
           cd ./manjaro-removed-pkgs
