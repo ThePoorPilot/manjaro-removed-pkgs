@@ -32,18 +32,18 @@ jobs:
           cd ./manjaro-removed-pkgs
           ./run.sh
           cd ./packages
-          echo "FILES_EXIST=$(test -f *.pkg.tar.zst; echo $?)" >> $GITHUB_ENV
+          echo "FILES_EXIST=$(ls -1 *.pkg.tar.zst 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
           cd ../
       - name: repo-add
-        if: ${{ env.FILES_EXIST == '0' }}
+        if: ${{ env.FILES_EXIST -gt '0' }}
         run: |
           cd ./manjaro-removed-pkgs/packages
           repo-add ./manjaro-removed-pkgs.db.tar.gz *.pkg.tar.zst
           cd ../
           cd ../
       - name: upload_pkgs
-        if: ${{ env.FILES_EXIST == '0' }}
+        if: ${{ env.FILES_EXIST -gt '0' }}
         run: |
           echo "${{ secrets.SECRET_TOKEN }}" > token.txt
           cd ./manjaro-removed-pkgs
