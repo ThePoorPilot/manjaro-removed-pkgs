@@ -36,14 +36,14 @@ jobs:
           cd ../
           cd ../
       - name: repo-add
-        if: ${{ env.FILES_EXIST -gt '0' }}
+        if: ${{ env.FILES_EXIST > '0' }}
         run: |
           cd ./manjaro-removed-pkgs/packages
           repo-add ./manjaro-removed-pkgs.db.tar.gz *.pkg.tar.zst
           cd ../
           cd ../
       - name: upload_pkgs
-        if: ${{ env.FILES_EXIST -gt '0' }}
+        if: ${{ env.FILES_EXIST > '0' }}
         run: |
           echo "${{ secrets.SECRET_TOKEN }}" > token.txt
           cd ./manjaro-removed-pkgs
