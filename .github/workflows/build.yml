@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "installing dependencies/pacman-utils"
           sudo apt-get update
-          sudo apt-get install sshpass ksh
+          sudo apt-get install ksh
           wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb
           sudo apt-get install -f ./pacman-utils_5.2.2-2_amd64.deb
       - name: download_pkgs
@@ -33,12 +33,14 @@ jobs:
           ./run.sh
           cd ../
       - name: repo-add
+        if: ${{ -f "*.pkg.tar.zst" }}
         run: |
           cd ./manjaro-removed-pkgs/packages
           repo-add ./manjaro-removed-pkgs.db.tar.gz *.pkg.tar.zst
           cd ../
           cd ../
       - name: upload_pkgs
+        if: ${{ -f "*.pkg.tar.zst" }}
         run: |
           echo "${{ secrets.SECRET_TOKEN }}" > token.txt
           cd ./manjaro-removed-pkgs
