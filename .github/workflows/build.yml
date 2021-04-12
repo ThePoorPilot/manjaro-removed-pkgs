@@ -31,16 +31,19 @@ jobs:
           git clone https://github.com/ThePoorPilot/manjaro-removed-pkgs.git
           cd ./manjaro-removed-pkgs
           ./run.sh
+          cd ./packages
+          echo "FILES_EXIST=$(test -f *.pkg.tar.zst; echo $?)" >> $GITHUB_ENV
+          cd ../
           cd ../
       - name: repo-add
-        if: ${{ -f "*.pkg.tar.zst" }}
+        if: ${{ env.FILES_EXIST == '0' }}
         run: |
           cd ./manjaro-removed-pkgs/packages
           repo-add ./manjaro-removed-pkgs.db.tar.gz *.pkg.tar.zst
           cd ../
           cd ../
       - name: upload_pkgs
-        if: ${{ -f "*.pkg.tar.zst" }}
+        if: ${{ env.FILES_EXIST == '0' }}
         run: |
           echo "${{ secrets.SECRET_TOKEN }}" > token.txt
           cd ./manjaro-removed-pkgs
