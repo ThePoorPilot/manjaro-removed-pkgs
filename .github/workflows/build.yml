@@ -56,17 +56,25 @@ jobs:
         run: |
           cd ./manjaro-removed-pkgs
           ./clean_repo.sh
-          echo "REMOVE_FROM_REL=$(cat ./files_to_delete.txt)" >> $GITHUB_ENV
+          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+          echo "$(cat ./files_to_delete.txt)" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
           cd ../
-      - name: Delete old packages
+      - name: Test
         #if: ${{ env.FILES_EXIST > '0' }}
-        uses: mknejp/delete-release-assets@v1
-        with:
-          token: ${{ secrets.SECRET_TOKEN }}
-          tag: x86_64 # This may also be of the form 'refs/tags/staging'
-          # 3. multiple names/globs, one per line
-          assets: | 
-            ${{ env.REMOVE_FROM_REL }}
+        run: |
+          echo "${{ env.MY_STRING }}
+
+#      - name: Delete old packages
+#        #if: ${{ env.FILES_EXIST > '0' }}
+#        uses: mknejp/delete-release-assets@v1
+#        with:
+#          token: ${{ secrets.SECRET_TOKEN }}
+#          tag: x86_64 # This may also be of the form 'refs/tags/staging'
+#          # 3. multiple names/globs, one per line
+#          assets: | 
+#            ${{ env.REMOVE_FROM_REL }}
+
 
 #      - name: upload_pkgs(old)
 #        run: |
