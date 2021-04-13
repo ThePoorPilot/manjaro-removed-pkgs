@@ -3,6 +3,7 @@
 rm -rf ./finding
 rm -rf ./packages
 mkdir ./finding
+mkdir ./finding/data
 mkdir ./packages
 
 #configure so repo-add works later

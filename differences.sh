@@ -2,8 +2,6 @@
 
 cd ./finding
 
-mkdir ./data
-
 #download $repo.db from both repos
 echo "Downloading $repo databases..."
 wget -q -O "$repo"_arch.db "$ARCH_REPO""/$repo/os/x86_64/$repo.db"
