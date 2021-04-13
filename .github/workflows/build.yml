@@ -63,7 +63,7 @@ jobs:
       - name: Test
         #if: ${{ env.FILES_EXIST > '0' }}
         run: |
-          echo "${{ env.MY_STRING }}
+          echo "${{ env.MY_STRING }}"
 
 #      - name: Delete old packages
 #        #if: ${{ env.FILES_EXIST > '0' }}
