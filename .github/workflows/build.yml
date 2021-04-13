@@ -54,7 +54,7 @@ jobs:
       - name: Generate files_to_delete.txt
         #if: ${{ env.FILES_EXIST > '0' }}
         run: |
-          cd ./manajaro-removed-pkgs
+          cd ./manjaro-removed-pkgs
           ./clean_repo.sh
           echo "REMOVE_FROM_REL=$(cat ./files_to_delete.txt)" >> $GITHUB_ENV
           cd ../
