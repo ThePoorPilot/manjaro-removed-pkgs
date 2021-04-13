@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "installing dependencies/pacman-utils"
           sudo apt-get update
-          sudo apt-get install ksh
+          sudo apt-get install ksh curl
           wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb
           sudo apt-get install -f ./pacman-utils_5.2.2-2_amd64.deb
       - name: download_pkgs
@@ -50,6 +50,23 @@ jobs:
           gh auth login --with-token < ../token.txt
           gh release upload -R github.com/ThePoorPilot/manjaro-removed-pkgs x86_64 ./packages/* --clobber
           rm ../token.txt
+          cd ../
+      - name: Generate files_to_delete.txt
+        if: ${{ env.FILES_EXIST > '0' }}
+        run: |
+          cd ./manajaro-removed-pkgs
+          ./clean_repo.sh
+          echo "REMOVE_FROM_REL=$(cat ./files_to_delete.txt)" >> $GITHUB_ENV
+          cd ../
+      - name: Delete old packages
+        if: ${{ env.FILES_EXIST > '0' }}
+        uses: mknejp/delete-release-assets@v1
+        with:
+          token: ${{ secrets.SECRET_TOKEN }}
+          tag: x86_64 # This may also be of the form 'refs/tags/staging'
+          # 3. multiple names/globs, one per line
+          assets: | 
+            ${{ env.REMOVE_FROM_REL }}
 
 #      - name: upload_pkgs(old)
 #        run: |
