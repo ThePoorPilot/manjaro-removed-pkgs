@@ -10,9 +10,9 @@ curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/Th
 #wget -q https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/manjaro-removed-pkgs.db
 echo "extracting manjaro-removed-pkgs database"
 mkdir ./manjaro-removed-pkgs
-{
+
 tar -zxf ../packages/manjaro-removed-pkgs.db -C ./manjaro-removed-pkgs
-} &> /dev/null
+
 awk '/%FILENAME%/{getline; print}' ./manjaro-removed-pkgs/*/desc > ./database_pkgs.txt
 
 diff --new-line-format="" --unchanged-line-format=""  ./uploaded_pkgs.txt ./database_pkgs.txt  > ../files_to_delete.txt
