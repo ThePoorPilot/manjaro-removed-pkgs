@@ -58,7 +58,12 @@ repo="community" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differenc
 repo="extra" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differences.sh
 repo="multilib" ARCH_REPO="$ARCH_REPO" MANJARO_REPO="$MANJARO_REPO" ./differences.sh
 
-cd packages
+cd ./packages
 rm ./manjaro-removed-pkgs.db
 rm ./manjaro-removed-pkgs.files
+
+#fixes issue caused by colons in file name being replaced with period when uploaded
+#namely, files with colons would be deleted by repo cleaning process
+rename : . *
+
 cd ../
