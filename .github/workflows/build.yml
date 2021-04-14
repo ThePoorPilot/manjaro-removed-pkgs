@@ -67,6 +67,7 @@ jobs:
         with:
           token: ${{ secrets.SECRET_TOKEN }}
           tag: x86_64 # This may also be of the form 'refs/tags/staging'
+          fail-if-no-assets: false
           # 3. multiple names/globs, one per line
           assets: | 
             ${{ env.REMOVE_FROM_REL }}
