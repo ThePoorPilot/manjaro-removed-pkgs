@@ -64,6 +64,8 @@ rm ./manjaro-removed-pkgs.files
 
 #fixes issue caused by colons in file name being replaced with period when uploaded
 #namely, files with colons would be deleted by repo cleaning process
-rename ":" "." *
+#rename command seems to operate differently on Debian
+#don't fully understand, pulled from here https://superuser.com/questions/659876/how-to-rename-files-and-replace-characters
+for f in *:*; do mv -v "$f" $(echo "$f" | tr ':' '.'); done
 
 cd ../

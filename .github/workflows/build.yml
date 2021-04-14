@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "installing dependencies/pacman-utils"
           sudo apt-get update
-          sudo apt-get install ksh curl rename
+          sudo apt-get install ksh curl
           wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb
           sudo apt-get install -f ./pacman-utils_5.2.2-2_amd64.deb
       - name: download_pkgs
