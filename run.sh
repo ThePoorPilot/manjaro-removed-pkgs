@@ -66,6 +66,6 @@ rm ./manjaro-removed-pkgs.files
 #namely, files with colons would be deleted by repo cleaning process
 #rename command seems to operate differently on Debian
 #don't fully understand, pulled from here https://superuser.com/questions/659876/how-to-rename-files-and-replace-characters
-for f in *:*.pkg.tar.zst; do mv -v "$f" $(echo "$f" | tr ':' '.'); done
+for f in *:*.pkg.tar.zst; do mv -v "$f" $(echo "$f" | tr ':' 'colon'); done
 
 cd ../
