@@ -64,6 +64,6 @@ rm ./manjaro-removed-pkgs.files
 
 #fixes issue caused by colons in file name being replaced with period when uploaded
 #namely, files with colons would be deleted by repo cleaning process
-rename : . *
+rename ":" "." *
 
 cd ../
