@@ -34,7 +34,13 @@ do ksh -c "awk '/%FILENAME%/{getline; print}' ./"$repo"_arch/$line-+([0-9])*-+([
 done < "$repo"_diff.txt
 } > "$repo"_diff_dl.txt
 
+#replace file names in dl list to match with repo
+sed -i 's/:/./g' ./"$repo"_diff_dl.txt
+
 diff --new-line-format="" --unchanged-line-format=""  ./"$repo"_diff_dl.txt ./manjaro_removed_pkgs.txt > dl_$repo.txt
+
+#replace period with colon again for use in downloading
+sed -i 's/./:/g' ./dl_$repo.txt
 
 echo "Downloading needed packages from $repo..."
 mapfile -t myArray < dl_$repo.txt
