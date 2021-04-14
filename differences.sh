@@ -45,5 +45,5 @@ sed -i 's/./:/g' ./dl_$repo.txt
 echo "Downloading needed packages from $repo..."
 mapfile -t myArray < dl_$repo.txt
 while IFS= read -r line;
-do wget -q "$ARCH_REPO""/$repo/os/x86_64/""$line" -P ../packages;
+do wget "$ARCH_REPO""/$repo/os/x86_64/""$line" -P ../packages;
 done < dl_$repo.txt
