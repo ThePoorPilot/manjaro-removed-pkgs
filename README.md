@@ -3,12 +3,11 @@ Arch Linux Repository that hosts all the packages on the Arch Repo that are unav
 
 Manjaro had decided to selectively remove packages from the Arch Linux Repository. Some of these choices are quite reasonable, such as grub-customizer. While it is in this repo, you should never ever use it unless you want a broken system.
 
-Manjaro also has made some removals that are a little more annoying. For example, they have removed the linux-zen kernel. I guess they just assumed an average user would not want to try using a custom kernel, but I still thinking users should be able to have the choice. If you disagree with any of the Manjaro team's removals, this repo should have what you need!
+Manjaro also has made some removals that are a little more annoying. For example, they have removed the linux-zen kernel. I guess they just assumed an average user would not want to try using a custom kernel, but I still think you should be able to have the choice. Plus, the linux-zen kernel is a very good all-round custom kernel.
 
-Packages are currently hosted in a github release here:
-https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/
+If you need any package that is removed by the Manjaro team, this repo should have what you need!
 
-Everything at the moment is in development. Hourly sync is now working, but in testing.
+### Adding the repo
 
 You can add the repo in /etc/pacman.conf by adding this entry
 
@@ -18,6 +17,15 @@ SigLevel = Optional TrustAll
 Server = https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/$arch
 ```
 
-To-do:
+### To-do:
 
-Packages are currently not signed. I am considering signing with a GPG key, but that would require a manjaro-removed-packages-keyring package. 
+Packages are currently not signed. I am considering signing with a GPG key, but that would require a manjaro-removed-packages keyring.
+
+Instead of signing with a GPG key, I should probably at least add an SHA sum check in the scripting.
+
+I initially tried using SourceForge for hosting, but their mirrors were extremely slow. It seems to be more designed for long-term storage
+
+Packages are currently hosted in a github release here:
+https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/
+
+Hourly sync is now working, but in testing.
