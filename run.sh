@@ -68,4 +68,14 @@ rm ./manjaro-removed-pkgs.files
 #don't fully understand, pulled from here https://superuser.com/questions/659876/how-to-rename-files-and-replace-characters
 for f in *:*.pkg.tar.zst; do mv -v "$f" $(echo "$f" | sed 's/:/colon/g'); done
 
+#generate updated releases notes
 cd ../
+sync_date="$(date)"
+
+cat << EOF > ./release_notes
+manjaro-removed-pkgs
+
+All packages removed from Manjaro are included in the release below
+Synced as of $sync_date
+EOF
+

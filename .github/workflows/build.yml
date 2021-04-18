@@ -32,6 +32,7 @@ jobs:
           git clone https://github.com/ThePoorPilot/manjaro-removed-pkgs.git
           cd ./manjaro-removed-pkgs
           ./run.sh
+          GITHUB_TOKEN=${{ secrets.SECRET_TOKEN }} hub release edit -F ./release_notes x86_64
           cd ./packages
           echo "FILES_EXIST=$(ls -1 *.pkg.tar.zst 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
