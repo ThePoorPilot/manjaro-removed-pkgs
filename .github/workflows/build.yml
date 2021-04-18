@@ -62,7 +62,7 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
           cd ../
       - name: Delete old packages
-        if: ${{ env.FILES_EXIST > '0' }}
+        if: ${{ env.FILES_EXIST > '0' }} && ${{ env.REMOVE_FROM_REL != '' }}
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.SECRET_TOKEN }}
