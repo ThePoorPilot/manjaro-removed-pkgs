@@ -25,6 +25,7 @@ mkdir ./manjaro-removed-pkgs
 tar -zxf ./manjaro-removed-pkgs.db -C ./manjaro-removed-pkgs
 } &> /dev/null
 awk '/%FILENAME%/{getline; print}' ./manjaro-removed-pkgs/*/desc > ./manjaro_removed_pkgs.txt
+awk '/%NAME%/{getline; print}' ./manjaro-removed-pkgs/*/desc > ./manjaro_removed_pkgs_names.txt
 
 ARCH_REPO_STATUS="$(curl -s -I https://mirrors.rit.edu/archlinux/ | grep -c '200')"
 MANJARO_REPO_STATUS="$(curl -s -I https://mirror.math.princeton.edu/pub/manjaro/ | grep -c '200')"
@@ -78,4 +79,9 @@ manjaro-removed-pkgs
 All packages removed from Manjaro are included in the release below
 Synced as of $sync_date
 EOF
+
+cd ./finding
+cat ./community_diff.txt ./multilib_diff.txt ./core_diff.txt extra_diff.txt | sort > ./combined_diff.txt
+
+diff --new-line-format="" --unchanged-line-format=""  ./manjaro_removed_pkgs_names.txt ./combined_diff.txt > ../repo-remove.txt
 

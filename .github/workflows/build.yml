@@ -33,6 +33,12 @@ jobs:
           cd ./manjaro-removed-pkgs
           ./run.sh
           GITHUB_TOKEN=${{ secrets.SECRET_TOKEN }} hub release edit -F ./release_notes x86_64
+          
+          echo "REPO-REMOVE<<EOF" >> $GITHUB_ENV
+          echo "$(cat ./repo-remove.txt)" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          
+          cd ../
           cd ./packages
           echo "FILES_EXIST=$(ls -1 *.pkg.tar.zst 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
@@ -44,6 +50,16 @@ jobs:
           repo-add ./manjaro-removed-pkgs.db.tar.gz *.pkg.tar.zst
           cd ../
           cd ../
+      - name: repo-remove
+        if: ${{ env.REPO-REMOVE != '' }}
+        run: |
+          cd ./manjaro-removed-pkgs
+          ./repo-remove.sh
+          echo "${{ secrets.SECRET_TOKEN }}" > ../token.txt          
+          gh auth login --with-token < ../token.txt
+          gh release upload -R github.com/ThePoorPilot/manjaro-removed-pkgs x86_64 ./packages/* --clobber
+          rm ../token
+          cd ../
       - name: upload_pkgs
         if: ${{ env.FILES_EXIST > '0' }}
         run: |
@@ -54,7 +70,7 @@ jobs:
           rm ../token.txt
           cd ../
       - name: Generate files_to_delete.txt
-        if: ${{ env.FILES_EXIST > '0' }}
+        if: ${{ env.FILES_EXIST > '0' || env.REPO-REMOVE != '' }}
         run: |
           cd ./manjaro-removed-pkgs
           ./clean_repo.sh
