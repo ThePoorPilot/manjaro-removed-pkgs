@@ -38,7 +38,6 @@ jobs:
           echo "$(cat ./repo-remove.txt)" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
           
-          cd ../
           cd ./packages
           echo "FILES_EXIST=$(ls -1 *.pkg.tar.zst 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
