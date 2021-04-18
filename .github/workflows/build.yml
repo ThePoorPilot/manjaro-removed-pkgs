@@ -54,7 +54,7 @@ jobs:
           ./repo-remove.sh
           echo "${{ secrets.SECRET_TOKEN }}" > ../token.txt          
           gh auth login --with-token < ../token.txt
-          gh release upload -R github.com/ThePoorPilot/manjaro-removed-pkgs x86_64 ./packages/* --clobber
+          gh release upload -R github.com/ThePoorPilot/manjaro-removed-pkgs x86_64 ./packages/manjaro-removed-pkgs* --clobber
           rm ../token.txt
           cd ../
       - name: upload_pkgs
