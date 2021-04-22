@@ -44,12 +44,12 @@ fi
 if [ "$MANJARO_REPO_STATUS" == "1" ]
 then
     echo "Princeton Manjaro Mirror is up!"
-    MANJARO_REPO="https://mirror.math.princeton.edu/pub/manjaro/stable"
+    MANJARO_REPO="https://mirror.math.princeton.edu/pub/manjaro/unstable"
 else
     echo "Princeton Manjaro Mirror is not up, choosing another mirror"
     #would like to have some way to pull from an active mirrorlist like is done for Arch
     #a better method to determine this could be in pacman-mirrors manjaro package
-    MANJARO_REPO="https://manjaro.moson.eu/stable"
+    MANJARO_REPO="https://manjaro.moson.eu/unstable"
 fi
 
 cd ../
