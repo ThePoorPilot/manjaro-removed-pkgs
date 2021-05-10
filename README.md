@@ -7,6 +7,8 @@ Manjaro also has made some removals that are a little more annoying. For example
 
 If you need any package that is removed by the Manjaro team, this repo should have what you need!
 
+I would recommend having some caution using this repo. Many of the modules, such as bbswitch, broadcom-wl, or tp_smapi, do have packages for each specific kernel version in the Manjaro repos. For this reason, I would only recommend using this repository for alternative Linux kernels, Arch Linux themes, Arch Linux development tools, or Perl/Haskell libraries that are removed for some reason.
+
 ### Adding the repo
 
 You can add the repo in /etc/pacman.conf by adding this entry
@@ -28,4 +30,4 @@ I initially tried using SourceForge for hosting, but their mirrors were extremel
 Packages are currently hosted in a github release here:
 https://github.com/ThePoorPilot/manjaro-removed-pkgs/releases/download/x86_64/
 
-Hourly sync is now working, but in testing.
+Hourly sync is now working, and the most recent sync time is listed on the release page.
